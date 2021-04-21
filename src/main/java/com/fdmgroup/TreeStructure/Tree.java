@@ -2,10 +2,10 @@ package com.fdmgroup.TreeStructure;
 
 public class Tree<E> {
 
-	E element;
+	public E element;
 	
-	Tree<E> left;
-	Tree<E> right;
+	public Tree<E> left;
+	public Tree<E> right;
 	
 	
 	public Tree(E element) {

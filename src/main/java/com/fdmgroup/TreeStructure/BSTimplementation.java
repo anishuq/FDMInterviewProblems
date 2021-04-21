@@ -21,11 +21,10 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 			Tree<E> parent = null;
 			
 			while(current!=null) {
+				parent = current;
 				if(node.element.compareTo(current.element) < 0) {
-					parent = current;
 					current = current.left;
 				}else {
-					parent = current;
 					current = current.right;
 				}
 			}
@@ -40,9 +39,20 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		
 	}
 
-	public void search(Tree<E> root, Tree<E> node) {
-		// TODO Auto-generated method stub
+	public boolean search(Tree<E> root, Tree<E> node) {
+		Tree<E> current = root;
 		
+		while(current!=null) {
+			if(node.element.compareTo(current.element) < 0) {
+				current = current.left;
+			}else if (node.element.compareTo(current.element) > 0){
+				current = current.right;
+			}else if (node.element.compareTo(current.element) == 0) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	public void delete(Tree<E> root, Tree<E> node) {
