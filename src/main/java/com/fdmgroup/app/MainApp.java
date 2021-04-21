@@ -14,5 +14,7 @@ public class MainApp {
 		
 		TreeTraversals<Integer> traversals = new BSTtraversals<Integer>();
 		traversals.inorder(bstimplementation.getRoot());
+		
+		traversals.dfs();
 	}
 }
