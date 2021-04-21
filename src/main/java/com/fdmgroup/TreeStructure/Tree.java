@@ -14,6 +14,4 @@ public class Tree<E> {
 		this.left = null;
 		this.right = null;
 	}
-	
-	
 }
