@@ -16,5 +16,7 @@ public class MainApp {
 		traversals.inorder(bstimplementation.getRoot());
 		
 		traversals.dfs();
+		
+		traversals.levelorder(bstimplementation.getRoot());
 	}
 }

@@ -1,7 +1,7 @@
 package com.fdmgroup.TreeTraversals;
 
 import java.util.*;
-import java.util.concurrent.LinkedBlockingDeque;
+
 
 import com.fdmgroup.TreeStructure.Tree;
 
@@ -15,6 +15,14 @@ public class BSTtraversals<E extends Comparable<E>> implements TreeTraversals<E>
 		}
 	}
 
+	/**
+	 * Objective: – Given a Binary Search Tree, Do the Depth First Search/Traversal
+	 * 
+	 * use Stack. First add the add root to the Stack. Pop
+	 * out an element from Stack and add its right and left children to stack. Pop
+	 * out an element and print it and add its children. Repeat the above two steps
+	 * until the Stack id empty.
+	 */
 	public void dfs() {
 		//create a ad-hoc tree.
 		Tree<Integer> root = new Tree<Integer>(1);
@@ -44,11 +52,19 @@ public class BSTtraversals<E extends Comparable<E>> implements TreeTraversals<E>
 
 	public void levelorder(Tree<E> root) {
 		Queue<Tree<Integer>> queue = new LinkedList<Tree<Integer>>();
-		/*
-		Queue<Integer> queue = new LinkedList<Integer>();
 		if(root.element instanceof Integer)
-				queue.add((Integer) root.element);
-		*/
+				queue.add((Tree<Integer>) root);
 		
+		while(!queue.isEmpty()) {
+			Tree<Integer> n = queue.remove();
+			
+			System.out.println(n.element);
+			
+			if(n.left != null)
+				queue.add(n.left);
+			
+			if(n.right != null)
+				queue.add(n.right);
+		}
 	}
 }
