@@ -1,5 +1,8 @@
 package com.fdmgroup.TreeStructure;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BSTimplementation<E extends Comparable<E>> implements TreeOperations<E> {
 
 	private TreeNode<E> root;
@@ -65,4 +68,28 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		return 0;
 	}
 
+	public void mirrorTree(TreeNode<E> root) {
+		System.out.println("-------------Mirrored Tree---------------");
+		TreeNode<E> temp = null;
+		
+		Queue<TreeNode<E>> queue = new LinkedList<TreeNode<E>>();
+		queue.add(root);
+		 
+		
+		while(!queue.isEmpty()) {
+			TreeNode<E> n = queue.remove();
+			System.out.println(n.element);
+			//swap left and right child of n.
+			temp = n.left;
+			n.left = n.right;
+			n.right = temp;
+			
+			if(n.left != null)
+				queue.add(n.left);
+			
+			if(n.right != null)
+				queue.add(n.right);  
+			
+		}
+	}
 }

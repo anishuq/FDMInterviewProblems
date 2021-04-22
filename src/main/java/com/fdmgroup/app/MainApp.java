@@ -18,5 +18,7 @@ public class MainApp {
 		traversals.dfs();
 		
 		traversals.levelorder(bstimplementation.getRoot());
+		
+		bstimplementation.mirrorTree(bstimplementation.getRoot());
 	}
 }

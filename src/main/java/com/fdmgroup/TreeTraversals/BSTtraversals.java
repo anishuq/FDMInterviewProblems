@@ -51,13 +51,12 @@ public class BSTtraversals<E extends Comparable<E>> implements TreeTraversals<E>
  	}
 
 	public void levelorder(TreeNode<E> root) {
-		int b = 0;
-		Queue<TreeNode<Integer>> queue = new LinkedList<TreeNode<Integer>>();
-		if(root.element instanceof Integer)
-				queue.add((TreeNode<Integer>) root);
+		
+		Queue<TreeNode<E>> queue = new LinkedList<TreeNode<E>>();
+		queue.add((TreeNode<E>) root);
 		
 		while(!queue.isEmpty()) {
-			TreeNode<Integer> n = queue.remove();
+			TreeNode<E> n = queue.remove();
 			
 			System.out.println(n.element);
 			
