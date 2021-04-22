@@ -1,8 +1,8 @@
 package com.fdmgroup.TreeStructure;
 
 public interface TreeOperations<E extends Comparable<E>> {
-	public void create(Tree<E> root);
-	public boolean search(Tree<E> root, Tree<E> node);
-	public void delete(Tree<E> root, Tree<E> node);
-	public int getHeight(Tree<E> root);
+	public void create(TreeNode<E> root);
+	public boolean search(TreeNode<E> root, TreeNode<E> node);
+	public void delete(TreeNode<E> root, TreeNode<E> node);
+	public int getHeight(TreeNode<E> root);
 }

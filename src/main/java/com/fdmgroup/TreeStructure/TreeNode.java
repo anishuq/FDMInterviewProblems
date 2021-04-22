@@ -1,14 +1,14 @@
 package com.fdmgroup.TreeStructure;
 
-public class Tree<E> {
+public class TreeNode<E> {
 
 	public E element;
 	
-	public Tree<E> left;
-	public Tree<E> right;
+	public TreeNode<E> left;
+	public TreeNode<E> right;
 	
 	
-	public Tree(E element) {
+	public TreeNode(E element) {
 		super();
 		this.element = element;
 		this.left = null;

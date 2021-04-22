@@ -2,23 +2,23 @@ package com.fdmgroup.TreeStructure;
 
 public class BSTimplementation<E extends Comparable<E>> implements TreeOperations<E> {
 
-	private Tree<E> root;
+	private TreeNode<E> root;
 	
 	public BSTimplementation(E[] objects) {
 		for(E e : objects)
-			create(new Tree<E>(e));
+			create(new TreeNode<E>(e));
 	}
 	
-	public Tree<E> getRoot() {
+	public TreeNode<E> getRoot() {
 		return root;
 	}
 
-	public void create(Tree<E> node) {
+	public void create(TreeNode<E> node) {
 		if(root == null)
 			root = node;
 		else {
-			Tree<E> current = root;
-			Tree<E> parent = null;
+			TreeNode<E> current = root;
+			TreeNode<E> parent = null;
 			
 			while(current!=null) {
 				parent = current;
@@ -39,8 +39,8 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		
 	}
 
-	public boolean search(Tree<E> root, Tree<E> node) {
-		Tree<E> current = root;
+	public boolean search(TreeNode<E> root, TreeNode<E> node) {
+		TreeNode<E> current = root;
 		
 		while(current!=null) {
 			if(node.element.compareTo(current.element) < 0) {
@@ -55,12 +55,12 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		return false;
 	}
 
-	public void delete(Tree<E> root, Tree<E> node) {
+	public void delete(TreeNode<E> root, TreeNode<E> node) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public int getHeight(Tree<E> root) {
+	public int getHeight(TreeNode<E> root) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
