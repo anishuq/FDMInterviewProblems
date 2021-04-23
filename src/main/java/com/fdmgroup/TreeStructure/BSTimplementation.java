@@ -225,9 +225,10 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 				
 				node.setElement(successor.getElement());
 				
-				if( successorParent.getElement().compareTo(root.getElement()) == 0 ){
+				//if the successor is the immediate right child of the node to be deleted.
+				if( node.right.getElement().compareTo(successor.getElement()) == 0 ){
 					//successorParent is root.
-					successorParent.right = null;
+					node.right = null;
 				}else {
 					successorParent.left = null;
 				}

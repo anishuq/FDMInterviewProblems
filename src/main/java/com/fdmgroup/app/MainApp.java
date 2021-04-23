@@ -31,7 +31,7 @@ public class MainApp {
 		
 		//deletions test:
 		
-		bstimplementation.delete(bstimplementation.getRoot(), new TreeNode<Integer>(47));
+		bstimplementation.delete(bstimplementation.getRoot(), new TreeNode<Integer>(22));
 		
 		
 		Optional<TreeNode<Integer>> parentWrap = Optional.ofNullable(bstimplementation.getRoot());
