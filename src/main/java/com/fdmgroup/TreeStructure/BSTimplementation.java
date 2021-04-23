@@ -1,7 +1,6 @@
 package com.fdmgroup.TreeStructure;
 
 import java.util.LinkedList;
-import java.util.Optional;
 import java.util.Queue;
 
 public class BSTimplementation<E extends Comparable<E>> implements TreeOperations<E> {
@@ -42,6 +41,9 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		this.searchedNode = searchedNode;
 	}
 
+	/**
+	 * 
+	 */
 	public void create(TreeNode<E> node) {
 		if(root == null)
 			root = node;
@@ -51,14 +53,14 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 			
 			while(current!=null) {
 				parent = current;
-				if(node.element.compareTo(current.element) < 0) {
+				if(node.getElement().compareTo(current.getElement()) < 0) {
 					current = current.left;
 				}else {
 					current = current.right;
 				}
 			}
 			
-			if(node.element.compareTo(parent.element) < 0) {
+			if(node.getElement().compareTo(parent.getElement()) < 0) {
 				parent.left = node;
 			}else {
 				parent.right = node;
@@ -73,13 +75,13 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		parent = null;
 		
 		while(current!=null) {
-			if(node.element.compareTo(current.element) < 0) {
+			if(node.getElement().compareTo(current.getElement()) < 0) {
 				parent = current;
 				current = current.left;
-			}else if (node.element.compareTo(current.element) > 0){
+			}else if (node.getElement().compareTo(current.getElement()) > 0){
 				parent = current;
 				current = current.right;
-			}else if (node.element.compareTo(current.element) == 0) {
+			}else if (node.getElement().compareTo(current.getElement()) == 0) {
 				this.setParent(parent);
 				this.setSearchedNode(current);
 				return true;
@@ -134,7 +136,7 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		
 		while(!queue.isEmpty()) {
 			TreeNode<E> n = queue.remove();
-			System.out.println(n.element);
+			System.out.println(n.getElement());
 			//swap left and right child of n.
 			temp = n.left;
 			n.left = n.right;
@@ -159,53 +161,79 @@ public class BSTimplementation<E extends Comparable<E>> implements TreeOperation
 		return 0;
 	}
 	
-	/**
-	 * 
-	 */
+	
 	public void delete(TreeNode<E> root, TreeNode<E> node) {
-		if(search(root, node)) {
+		if (search(root, node)) {
 			System.out.println("------------Searched Node Found For Deletion--------------");
 			node = this.getSearchedNode();
 			TreeNode<E> parent = this.getParent();
-			
-			if((node.left == null) && (node.right == null)) {//the node to be deleted is a LEAF.
-				if(parent != null) {
-					if((parent.left != null) && (parent.left.element.compareTo(node.element) == 0) ){
+
+			// ============================================================================================
+			// //
+			// the node to be deleted is a LEAF.
+			if ((node.left == null) && (node.right == null)) {
+				if (parent != null) {
+					if ((parent.left != null) && (parent.left.getElement().compareTo(node.getElement()) == 0)) {
 						parent.left = null;
-					}else if((parent.right != null) && (parent.right.element.compareTo(node.element) == 0) ){
+					} else if ((parent.right != null) && (parent.right.getElement().compareTo(node.getElement()) == 0)) {
 						parent.right = null;
 					}
-				}else {//parent null means its ROOT and here its a ONE node tree..
+				} else {// parent null means its ROOT and here its a ONE node tree..
 					this.setRoot(null);
 				}
 			}
-				
+			// ============================================================================================
 			
-			//Node to be deleted has only ONE child
-			if( (node.left != null) && (node.right == null)){
-				if(parent != null) {//node is not ROOT
-					if((parent.left != null) && (parent.left.element.compareTo(node.element) == 0) ){
+			// ============================================================================================
+			// Node to be deleted has only ONE child
+			if ((node.left != null) && (node.right == null)) {
+				if (parent != null) {// node is not ROOT
+					if ((parent.left != null) && (parent.left.getElement().compareTo(node.getElement()) == 0)) {
 						parent.left = node.left;
-					}else if((parent.right != null) && (parent.right.element.compareTo(node.element) == 0) ){
+					} else if ((parent.right != null) && (parent.right.getElement().compareTo(node.getElement()) == 0)) {
 						parent.right = node.left;
 					}
-				}else {//node is ROOT
+				} else {// node is ROOT
 					this.setRoot(node.left);
 				}
 			}
-			
+
 			if ((node.left == null) && (node.right != null)) {
-				if(parent != null) {//node is not Root 
-					if((parent.left != null) && (parent.left.element.compareTo(node.element) == 0) ){
+				if (parent != null) {// node is not Root
+					if ((parent.left != null) && (parent.left.getElement().compareTo(node.getElement()) == 0)) {
 						parent.left = node.right;
-					}else if((parent.right != null) && (parent.right.element.compareTo(node.element) == 0) ){
+					} else if ((parent.right != null) && (parent.right.getElement().compareTo(node.getElement()) == 0)) {
 						parent.right = node.right;
 					}
-				}else {//node is ROOT
+				} else {// node is ROOT
 					this.setRoot(node.right);
 				}
 			}
+			// ============================================================================================ 
 			
+
+			// ============================================================================================
+			// Node to be deleted has TWO children 
+			if ((node.left != null) && (node.right != null)) {
+				//find successor
+				TreeNode<E> successorParent = node;
+				TreeNode<E> successor = node.right;
+				while(successor.left != null) {
+					successorParent = successor;
+					successor = successor.left;
+				}
+				
+				node.setElement(successor.getElement());
+				
+				if( successorParent.getElement().compareTo(root.getElement()) == 0 ){
+					//successorParent is root.
+					successorParent.right = null;
+				}else {
+					successorParent.left = null;
+				}
+			}
+			// ============================================================================================
+			// 
 		}
 	}
 }

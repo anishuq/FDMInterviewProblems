@@ -9,10 +9,11 @@ import com.fdmgroup.TreeTraversals.*;
 public class MainApp {
 	public static  void main(String[] args) {
 		//Integer[] intArr = {40, 20, 60, 10, 30, 50, 70}; 
-		Integer[] intArr = {100, 110, 120, 130};
+		//Integer[] intArr = {100, 110, 120, 130};
 		//Integer[] intArr = {100, 90, 80, 70};
+		//Integer[] intArr = {63, 47, 71};
 		//Input from Data Structure & Algorithms in Java By Robert Lafore, page - 315. 
-		//Integer[] intArr = {63, 47, 71, 22, 53, 67, 11, 33, 50, 60, 17, 49, 51};
+		Integer[] intArr = {63, 47, 71, 22, 53, 67, 11, 33, 50, 60, 17, 49, 51};
 		
 		BSTimplementation<Integer> bstimplementation = new BSTimplementation<Integer>(intArr); 
 		
@@ -30,7 +31,7 @@ public class MainApp {
 		
 		//deletions test:
 		
-		bstimplementation.delete(bstimplementation.getRoot(), new TreeNode<Integer>(100));
+		bstimplementation.delete(bstimplementation.getRoot(), new TreeNode<Integer>(47));
 		
 		
 		Optional<TreeNode<Integer>> parentWrap = Optional.ofNullable(bstimplementation.getRoot());

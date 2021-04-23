@@ -10,7 +10,7 @@ public class BSTtraversals<E extends Comparable<E>> implements TreeTraversals<E>
 	public void inorder(TreeNode<E> node) {
 		if(node != null) {
 			inorder(node.left);
-			System.out.println(node.element);
+			System.out.println(node.getElement());
 			inorder(node.right);
 		}
 	}
@@ -39,7 +39,7 @@ public class BSTtraversals<E extends Comparable<E>> implements TreeTraversals<E>
 		
 		while(!dfsStack.isEmpty()) {
 			TreeNode<Integer> n = dfsStack.pop();
-			System.out.println(n.element);
+			System.out.println(n.getElement());
 			
 			if(n.right != null)
 				dfsStack.add(n.right);
@@ -58,7 +58,7 @@ public class BSTtraversals<E extends Comparable<E>> implements TreeTraversals<E>
 		while(!queue.isEmpty()) {
 			TreeNode<E> n = queue.remove();
 			
-			System.out.println(n.element);
+			System.out.println(n.getElement());
 			
 			if(n.left != null)
 				queue.add(n.left);
